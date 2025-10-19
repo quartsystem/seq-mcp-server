@@ -34,8 +34,18 @@ dotnet tool install -g QuartSystem.SeqMcpServer
 
 ### Install the Global Tool
 
+**From NuGet (Recommended):**
 ```bash
 dotnet tool install -g QuartSystem.SeqMcpServer
+```
+
+**From Local Package:**
+```bash
+# Install from local .nupkg file
+dotnet tool install -g --add-source ./dist QuartSystem.SeqMcpServer
+
+# Install specific version
+dotnet tool install -g --add-source ./dist QuartSystem.SeqMcpServer --version 1.1.0
 ```
 
 **Verify installation PowerShell:**
@@ -128,9 +138,6 @@ Seq-MCP Server includes a command-line interface for license management:
 # Activate a license key (after purchase)
 seq-mcp activate <your-license-key>
 
-# Activate from JSON file
-seq-mcp activate license.json
-
 # Show help information
 seq-mcp help
 
@@ -138,10 +145,10 @@ seq-mcp help
 seq-mcp version
 
 # Get machine ID for licensing
-seq-mcp --machine-id
+seq-mcp machine-id
 
 # Check license status and expiration
-seq-mcp --license-status
+seq-mcp license-status
 ```
 
 **Note**: Running `seq-mcp` without any commands starts the MCP server normally.

@@ -383,6 +383,46 @@ After configuring, test your settings:
 - Adjust `Seq__DefaultPageSize` for better performance
 - Consider using `Seq__MaxWindowMinutes` to limit time ranges
 
+## 🛠️ CLI Commands
+
+SEQ MCP Server includes a command-line interface for license management:
+
+### Basic Commands
+
+```bash
+# Get machine ID for licensing
+seq-mcp machine-id
+
+# Check license status and expiration
+seq-mcp license-status
+
+# Show help information
+seq-mcp help
+
+# Show version information
+seq-mcp version
+```
+
+### License Activation
+
+```bash
+# Activate license with JWT token
+seq-mcp activate "eyJhbGc...JWT_TOKEN"
+```
+
+### Installation Options
+
+```bash
+# Install from NuGet (recommended)
+dotnet tool install -g QuartSystem.SeqMcpServer
+
+# Install from local package
+dotnet tool install -g --add-source ./dist QuartSystem.SeqMcpServer
+
+# Install specific version
+dotnet tool install -g --add-source ./dist QuartSystem.SeqMcpServer --version 1.1.0
+```
+
 ## 📚 Related Documentation
 
 - **[Quick Start Guide](quick-start.md)** - Basic setup and installation

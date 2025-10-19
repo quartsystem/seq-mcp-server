@@ -72,7 +72,7 @@ Thank you for trying SEQ MCP Server!
    
    Run this command to get your machine ID:
    ```bash
-   seq-mcp --machine-id
+   seq-mcp machine-id
    ```
    
    This will output something like:
@@ -118,6 +118,20 @@ Thank you for trying SEQ MCP Server!
 
 4. **Activate License** (see [Installing a License](#installing-a-license))
 
+### 🆕 Automatic License Activation
+
+When you request a license, you may receive an activation script along with your license key. This script automatically activates your license for you.
+
+**If you receive an activation script:**
+
+1. **Save the script file** (e.g., `LicenseActivation365.bat` or `LicenseActivation365.sh`)
+2. **Execute the script** to automatically activate your license:
+   - **Windows:** Double-click the `.bat` file or run it from command line
+   - **Linux/macOS:** Run `chmod +x LicenseActivation365.sh && ./LicenseActivation365.sh`
+3. **Verify activation** with `seq-mcp license-status`
+
+**If you only receive a license key:** Use the manual activation methods described below.
+
 ### License Renewals
 
 When your license expires, simply send a renewal request to the same email address with:
@@ -131,43 +145,17 @@ When your license expires, simply send a renewal request to the same email addre
 
 ## 📥 Installing a License
 
-Once you receive your license key via email, install it using the `activate` command. The command supports two methods:
-
-### Method 1: Direct License Key
+Once you receive your license key via email, install it using the `activate` command:
 
 ```bash
 seq-mcp activate "YOUR_LICENSE_KEY_FROM_EMAIL"
 ```
 
-### Method 2: JSON File
-
-Create a JSON file with your license information:
-
-```json
-{
-  "licenseKey": "YOUR_LICENSE_KEY_FROM_EMAIL",
-  "machineId": "YOUR_MACHINE_ID_FROM_EMAIL"
-}
-```
-
-Then activate using the file:
-
-```bash
-seq-mcp activate license.json
-```
-
-### Automatic Detection
-
-The `activate` command automatically detects whether you're providing:
-- **A direct license key**: If the input is a JWT token (typically starts with `eyJ`)
-- **A file path**: If the input contains path separators (`/` or `\`) or has file extensions (`.json`, `.txt`, `.key`)
-
 ### Installation Steps
 
-1. **Choose your method** (direct key or JSON file)
-2. **Run the activate command**
-3. **Verify installation** with `seq-mcp --license-status`
-4. **Restart your MCP client** (Cursor, Claude Desktop, etc.)
+1. **Run the activate command** with your license key
+2. **Verify installation** with `seq-mcp license-status`
+3. **Restart your MCP client** (Cursor, Claude Desktop, etc.)
 
 ---
 
@@ -178,7 +166,7 @@ The `activate` command automatically detects whether you're providing:
 Use the CLI command to check your current license status:
 
 ```bash
-seq-mcp --license-status
+seq-mcp license-status
 ```
 
 This will display detailed information about your license:
@@ -218,7 +206,7 @@ Type: None
 Error: License has expired
 
 🛒 To request a free license:
-1. Get your machine ID: seq-mcp --machine-id
+1. Get your machine ID: seq-mcp machine-id
 2. Email: support@quartsystem.com
 ```
 
@@ -290,9 +278,9 @@ Error: License has expired
 **Cause:** Machine ID doesn't match
 
 **Solution:**
-- Get the correct Machine ID from your system using `seq-mcp --machine-id`
+- Get the correct Machine ID from your system using `seq-mcp machine-id`
 - Request a new license with the correct Machine ID
-- Check license status with `seq-mcp --license-status` to verify the fix
+- Check license status with `seq-mcp license-status` to verify the fix
 
 ### "License has expired"
 
@@ -301,7 +289,7 @@ Error: License has expired
 **Solution:**
 - Request a license renewal by emailing [support@quartsystem.com](mailto:support@quartsystem.com)
 - Include your Machine ID and previous license information
-- Check license status with `seq-mcp --license-status` to confirm expiration
+- Check license status with `seq-mcp license-status` to confirm expiration
 
 ### Trial starts even with existing license
 
